@@ -1,0 +1,26 @@
+{
+  "name": "@apexjs-org/openapi",
+  "version": "1.0.2",
+  "description": "An OpenAPI 3.1 description library for TypeScript with Zod schema support",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apexjs-org/openapi.git"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-esm ./src/index.ts"
+  },
+  "author": "apexjs-org",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "zod": "^3.24.4",
+    "zod-to-json-schema": "^3.24.5"
+  }
+}
