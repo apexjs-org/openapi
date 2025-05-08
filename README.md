@@ -15,7 +15,7 @@ npm install @apexjs-org/openapi
 
 ## Example
 
-Define your API response and request schemas as [Zod schemas](https://www.npmjs.com/package/zod) schemas or [JSON schemas](https://json-schema.org/):
+Define your API response and request schemas as [Zod schemas](https://www.npmjs.com/package/zod) or [JSON schemas](https://json-schema.org/):
 ```ts
 // schemas.ts
 import { z } from "zod";
@@ -50,7 +50,7 @@ paths['/users'] = {
   get: {
     operationId: 'listUsers', // Name of the function that this request should trigger
     summary: 'Finds users.',
-    parameters: [...searchParameterRefs()], // References the q, sort and offset parameters (included in the components.parameters, see index.ts below)
+    parameters: searchParameterRefs(), // References the q, sort and offset parameters (included in the components.parameters, see index.ts below)
     responses: {
       ...errorResponseRefs(), // References the BadRequest, Unauthorized, Forbidden, NotFound and TooManyRequests errors (included in the components.responses, see index.ts below)
       '200': jsonResponse(schemaRef('UserList')) // JSON response with a reference to a custom schema (included in the components.schemas, see index.ts below)
@@ -72,7 +72,7 @@ paths['/users/{userId}'] = {
   get: {
     operationId: 'getUser',
     summary: 'Gets a user by id.',
-    parameters: [...idParameters(['userId'])], // Specifies the userId parameter in this path
+    parameters: idParameters(['userId']), // Specifies the userId parameter in this path
     responses: {
       ...errorResponseRefs(),
       '200': jsonResponse(schemaRef('User'))
@@ -81,7 +81,7 @@ paths['/users/{userId}'] = {
   patch: {
     operationId: 'updateUser',
     summary: 'Updates a user by id.',
-    parameters: [...idParameters(['userId'])],
+    parameters: idParameters(['userId']),
     requestBody: jsonBody(schemaRef('UserUpdate')),
     responses: {
       ...errorResponseRefs(),
@@ -91,7 +91,7 @@ paths['/users/{userId}'] = {
   delete: {
     operationId: 'deleteUser',
     summary: 'Deletes a user by id.',
-    parameters: [...idParameters(['userId'])],
+    parameters: idParameters(['userId']),
     responses: {
       ...errorResponseRefs(),
       '200': jsonResponse() // JSON response without a schema (reference)
