@@ -136,4 +136,4 @@ export const openapi: OpenApi = {
 // console.dir(openapi, { depth: null })
 ```
 
-Put your OpenAPI description in [express-openapi-validator](https://www.npmjs.com/package/express-openapi-validator) to bring it to life. See the example folder.
+Put your OpenAPI description in [express-openapi-validator](https://www.npmjs.com/package/express-openapi-validator) to bring it to life. See the example folder or follow this [tutorial](https://medium.com/@apexjs-org/create-a-node-js-rest-api-with-an-openapi-description-in-minutes-972dda90e373)

@@ -7,16 +7,16 @@ paths['/users'] = {
   get: {
     operationId: 'listUsers', // Name of the function that this request should trigger
     summary: 'Finds users.',
-    parameters: searchParameterRefs(), // References the q, sort and offset parameters (included in components.parameters, see index.ts below)
+    parameters: searchParameterRefs(), // References the q, sort and offset parameters (included in components.parameters, see openapi.ts)
     responses: {
-      ...errorResponseRefs(), // References the BadRequest, Unauthorized, Forbidden, NotFound and TooManyRequests errors (included in components.responses, see index.ts below)
-      '200': jsonResponse(schemaRef('UserList')) // JSON response with a reference to a custom schema (included in components.schemas, see index.ts below)
+      ...errorResponseRefs(), // References the BadRequest, Unauthorized, Forbidden, NotFound and TooManyRequests errors (included in components.responses, see openapi.ts below)
+      '200': jsonResponse(schemaRef('UserList')) // JSON response with a reference to a custom schema (included in components.schemas, see openapi.ts)
     }
   },
   post: {
     operationId: 'createUser',
     summary: 'Creates a new user.',
-    requestBody: jsonBody(schemaRef('UserCreate')), // JSON body with a reference to a custom schema (included in components.schemas, see index.ts below)
+    requestBody: jsonBody(schemaRef('UserCreate')), // JSON body with a reference to a custom schema (included in components.schemas, see openapi.ts)
     responses: {
       ...errorResponseRefs(),
       '201': jsonResponse(schemaRef('User'), 'created')
