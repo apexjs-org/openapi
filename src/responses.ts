@@ -1,5 +1,5 @@
 import { jsonContent, type Content } from "./bodies.js"
-import { type Ref, type Schema, schemaRef } from "./schemas.js"
+import { type Ref, type Schema, type SchemaRef, schemaRef } from "./schemas.js"
 
 export interface Response {
   description: string;
@@ -41,7 +41,7 @@ const TooManyRequests: Response = {
   content: errorContent
 }
 
-export function jsonResponse(schema?: Schema, description: string = 'ok'): Response {
+export function jsonResponse(schema?: Schema | SchemaRef, description: string = 'ok'): Response {
   return {
     description,
     content: jsonContent(schema ? schema : {})

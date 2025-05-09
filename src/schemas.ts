@@ -5,7 +5,8 @@ export interface Ref {
   '$ref': string;
 }
 
-export type Schema = Ref | { 'oneOf': Ref[] } | JsonSchema7Type;
+export type SchemaRef = Ref | { 'oneOf': Ref[] };
+export type Schema = JsonSchema7Type;
 
 export interface Schemas {
   [key: string]: Schema // key = schema name
@@ -22,13 +23,16 @@ const Error = z.object({
 export function schemaRef(schemaName: string): Ref {
   return { '$ref': `#/components/schemas/${schemaName}` }
 }
-export function jsonSchema(zodSchema: ZodType): JsonSchema7Type {
-  return zodToJsonSchema(zodSchema, 'schema')?.definitions?.schema || {};
+
+export function jsonSchema(schema: ZodType | JsonSchema7Type): Schema {
+  return schema instanceof z.ZodType ?
+    (zodToJsonSchema(schema, 'schema')?.definitions?.schema || {}) :
+    schema;
 }
 
-export function jsonSchemas(zodSchemas: { [key: string]: ZodType }): Schemas {
+export function jsonSchemas(schemas: { [key: string]: ZodType | JsonSchema7Type }): Schemas {
   return Object.fromEntries(
-    Object.entries(zodSchemas).map(([key, schema]) => [key, jsonSchema(schema)])
+    Object.entries(schemas).map(([key, schema]) => [key, jsonSchema(schema)])
   )
 }
 

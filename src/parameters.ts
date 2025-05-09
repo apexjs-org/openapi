@@ -1,12 +1,12 @@
 import { z } from "zod";
-import { jsonSchema, type Schema, type Ref } from "./schemas.js"
+import { jsonSchema, type Schema, type SchemaRef, type Ref } from "./schemas.js"
 
 export interface Parameter {
   name: string;
   in?: 'query' | 'path' | 'header' | 'cookie';
   description?: string;
   required?: boolean;
-  schema: Schema
+  schema: Schema | SchemaRef
 }
 
 export interface Parameters {
@@ -25,7 +25,7 @@ const id: Parameter = {
 const queryParam: Parameter = {
   name: 'q',
   in: 'query',
-  description: 'Parameter to search list results.',
+  description: 'Searches list results.',
   required: false,
   schema: jsonSchema(z.string().max(250))
 }
@@ -33,7 +33,7 @@ const queryParam: Parameter = {
 const sortParam: Parameter = {
   name: 'sort',
   in: 'query',
-  description: 'Parameter to sort list results.',
+  description: 'Sorts list results.',
   required: false,
   schema: jsonSchema(z.string().max(250))
 }
@@ -41,7 +41,7 @@ const sortParam: Parameter = {
 const offsetParam: Parameter = {
   name: 'offset',
   in: 'query',
-  description: 'Parameter to skip list results.',
+  description: 'Skips list results.',
   required: false,
   schema: jsonSchema(z.number().default(0))
 }

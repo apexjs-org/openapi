@@ -50,16 +50,16 @@ paths['/users'] = {
   get: {
     operationId: 'listUsers', // Name of the function that this request should trigger
     summary: 'Finds users.',
-    parameters: searchParameterRefs(), // References the q, sort and offset parameters (included in the components.parameters, see index.ts below)
+    parameters: searchParameterRefs(), // References the q, sort and offset parameters (included in components.parameters, see index.ts below)
     responses: {
-      ...errorResponseRefs(), // References the BadRequest, Unauthorized, Forbidden, NotFound and TooManyRequests errors (included in the components.responses, see index.ts below)
-      '200': jsonResponse(schemaRef('UserList')) // JSON response with a reference to a custom schema (included in the components.schemas, see index.ts below)
+      ...errorResponseRefs(), // References the BadRequest, Unauthorized, Forbidden, NotFound and TooManyRequests errors (included in components.responses, see index.ts below)
+      '200': jsonResponse(schemaRef('UserList')) // JSON response with a reference to a custom schema (included in components.schemas, see index.ts below)
     }
   },
   post: {
     operationId: 'createUser',
     summary: 'Creates a new user.',
-    requestBody: jsonBody(schemaRef('UserCreate')), // JSON body with a reference to a custom schema (included in the components.schemas, see index.ts below)
+    requestBody: jsonBody(schemaRef('UserCreate')), // JSON body with a reference to a custom schema (included in components.schemas, see index.ts below)
     responses: {
       ...errorResponseRefs(),
       '201': jsonResponse(schemaRef('User'), 'created')
@@ -117,13 +117,13 @@ export const openapi: OpenApi = {
     version: '1.0.0'
   },
   security: [
-    { BearerAuth: [] } // Specifies that all paths should use the BearerAuth security scheme, see components.securitySchemes. Specifying security at the path method level is possible as well (to disable security, use: security: [])
+    { BearerAuth: [] } // Specifies that all paths should use the BearerAuth security scheme, see components.securitySchemes. Specifying security at the path method level is possible as well (to disable global security on path level, use: security: [])
   ],
   paths: userPaths,
   components: {
     schemas: {
       Error: errorSchema(), // Specifies the Error schema for the error responses, same schema as express-openapi-validator errors
-      ...jsonSchemas(schemas) // Converts the specified Zod schemas to JSON schemas
+      ...jsonSchemas(schemas) // Converts Zod schemas to JSON schemas
     },
     parameters: searchParameters(), // Specifies the q, sort and offset parameters so that they can be referenced
     securitySchemes: {
@@ -136,4 +136,4 @@ export const openapi: OpenApi = {
 // console.dir(openapi, { depth: null })
 ```
 
-Put your OpenAPI description in [express-openapi-validator](https://www.npmjs.com/package/express-openapi-validator) to bring it to life.
+Put your OpenAPI description in [express-openapi-validator](https://www.npmjs.com/package/express-openapi-validator) to bring it to life. See the example folder.

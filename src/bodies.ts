@@ -1,7 +1,7 @@
-import { type Schema } from "./schemas.js";
+import { type Schema, type SchemaRef } from "./schemas.js";
 
 export interface Content {
-  [key: string]: { schema: Schema }; // key = media type
+  [key: string]: { schema: Schema | SchemaRef }; // key = media type
 }
 
 export interface RequestBody {
@@ -10,13 +10,13 @@ export interface RequestBody {
   content: Content;
 }
 
-export function jsonContent(schema: Schema): Content {
+export function jsonContent(schema: Schema | SchemaRef): Content {
   return {
     'application/json': { schema }
   }
 }
 
-export function jsonBody(schema: Schema, required: boolean = true): RequestBody {
+export function jsonBody(schema: Schema | SchemaRef, required: boolean = true): RequestBody {
   return {
     required,
     content: jsonContent(schema)
