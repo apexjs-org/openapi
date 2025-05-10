@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import { validator, errorHandler, BearerAuth } from './middleware.js';
 import { openapi } from './openapi.js';
 import * as operations from './operations.js';
@@ -10,7 +9,7 @@ const start = async () => {
 
     const securityHandlers = {}; // = no security/authentication, to enable security use { BearerAuth } and uncomment openapi.ts security
 
-    app.use(bodyParser.json());
+    app.use(express.json());
     app.use(validator(openapi, operations, securityHandlers));
     app.use(errorHandler);
 
