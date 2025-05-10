@@ -1,6 +1,6 @@
 # Easily create type-safe OpenAPI descriptions
 
-[@apexjs-org/openapi](https://www.npmjs.com/package/@apexjs-org/openapi) is an OpenAPI 3.1+ description library for TypeScript with Zod schema support. You can use this package to easily create a type-safe OpenAPI ([Swagger](https://swagger.io/docs/specification/v3_0/about/)) description. Use [express-openapi-validator](https://www.npmjs.com/package/express-openapi-validator) to bring your OpenAPI description to life with auto-validation and request handling. See this [tutorial](https://medium.com/@apexjs-org/create-a-node-js-rest-api-with-an-openapi-description-in-minutes-972dda90e373).
+[@apexjs-org/openapi](https://www.npmjs.com/package/@apexjs-org/openapi) is an OpenAPI 3.1+ description library for TypeScript with Zod schema support. You can use this package to easily create a type-safe OpenAPI ([Swagger](https://swagger.io/docs/specification/v3_0/about/)) description. Use [express-openapi-validator](https://www.npmjs.com/package/express-openapi-validator) to bring your OpenAPI description to life with auto-validation and request handling. See the example folder or follow this [tutorial](https://medium.com/@apexjs-org/create-a-node-js-rest-api-with-an-openapi-description-in-minutes-972dda90e373).
 
 ## Installation
 
@@ -131,4 +131,4 @@ export const openapi: OpenApi = {
 // console.dir(openapi, { depth: null })
 ```
 
-Follow this [tutorial](https://medium.com/@apexjs-org/create-a-node-js-rest-api-with-an-openapi-description-in-minutes-972dda90e373) to bring your OpenAPI description to life with [express-openapi-validator](https://github.com/cdimascio/express-openapi-validator).
+You can bring your OpenAPI description to life with [express-openapi-validator](https://github.com/cdimascio/express-openapi-validator). See the example folder or follow this [tutorial](https://dev.to/apexjs-org/create-a-nodejs-rest-api-with-an-openapi-description-in-minutes-2k73).
