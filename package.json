@@ -1,6 +1,6 @@
 {
   "name": "@apexjs-org/openapi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An OpenAPI 3.1 description library for TypeScript with Zod schema support",
   "repository": {
     "type": "git",
